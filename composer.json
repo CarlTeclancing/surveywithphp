@@ -1,0 +1,29 @@
+{
+    "name": "rabbitmaid/surverplus",
+    "description": "A survey generation system",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "rabbitmaid",
+            "email": "therabbitmaid@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+
+    "autoload" : {
+
+        "psr-4": {
+            "Surveyplus\\" : "./"
+        },
+
+        "files" : [
+            "helpers/url_helper.php",
+            "helpers/debug_helper.php",
+            "helpers/form_helper.php",
+            "./constants.php"
+        ]
+    },
+
+    "require": {}
+}
