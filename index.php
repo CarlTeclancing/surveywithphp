@@ -4,15 +4,6 @@
 
 <?php require "partials/navigation.php" ?>
 
-<?php
-
-    use Surveyplus\App\Config\Database;
-
-    $database = new Database();
-    $database->connect();
-
-?>
-
 
 <main>
 
@@ -37,10 +28,18 @@
                     <p>Be the person with great ideas. Surveys give you actional insignits and fresh perspectives</p>
 
                     <div class="hero__button--group mt-5 d-flex flex-column flex-lg-row">
+                        
+                    <?php if (!isset($_SESSION['user_id'])) : ?>
 
                         <a href="<?= BASE_URL . "/signup.php" ?>" class="btn btn-primary text-white rounded-0">Sign Up For Free</a>
 
                         <a href="<?= BASE_URL . "/login.php" ?>" class="btn btn-outline-secondary rounded-0 mt-3 mt-lg-0 ms-lg-4">Get Started</a>
+
+                    <?php else : ?>
+
+                        <a href="<?= DASHBOARD_URL ?>" class="btn btn-primary text-white rounded-0" target="_blank">Start creating surveys</a>
+
+                    <?php endif ?>
 
                     </div>
                 </div>

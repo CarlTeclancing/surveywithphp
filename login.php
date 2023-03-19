@@ -8,6 +8,8 @@
     <div class="container mt-5 p-5 px-lg-0 py-lg-5">
 
 
+        <?php require "partials/notification.php"?>
+
         <div class="row">
 
 
@@ -16,22 +18,22 @@
             </div>
             <div class="col-lg-5 mt-5 mb-5">
 
-                <h3 class="text-center fw-bold">SURVEYplus</h3>
+                <h3 class="text-center fw-bold">survey+</h3>
                 <p class="text-center mb-3">Login to your Dashboard</p>
 
 
-                <form action="">
+                <form action="<?= base_url("includes/login.inc.php") ?>" method="POST" autocomplete="off">
 
                     <div class="form-group mb-3">
 
-                        <input type="text" class="form-control border border-1 border-primary rounded-0" placeholder="Enter your email..." />
+                        <input type="text" class="form-control border border-1 border-primary rounded-0" name="email" placeholder="Enter your email..." />
 
                     </div>
 
 
                     <div class="form-group mb-5">
 
-                        <input type="password" class="form-control border border-1 border-primary rounded-0" placeholder="Enter your password..." />
+                        <input type="password" class="form-control border border-1 border-primary rounded-0" name="password" placeholder="Enter your password..." />
 
                     </div>
 

@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule (^|/)app(/|$) - [F]
+RewriteRule (^|/)helpers(/|$) - [F]
+RewriteRule (^|/)partials(/|$) - [F]
+RewriteRule (^|/)dashboard/partials(/|$) - [F]

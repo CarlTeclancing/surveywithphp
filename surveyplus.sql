@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2023 at 01:00 PM
+-- Generation Time: Mar 19, 2023 at 10:47 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -75,14 +75,23 @@ CREATE TABLE `profile` (
   `id` int(11) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `dob` date NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT current_timestamp(),
-  `reservation` varchar(45) DEFAULT NULL,
+  `handle` varchar(45) DEFAULT NULL,
   `signature` varchar(45) DEFAULT NULL,
+  `isActive` tinyint(1) NOT NULL,
   `user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `gender_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`id`, `first_name`, `last_name`, `username`, `dob`, `createdOn`, `handle`, `signature`, `isActive`, `user_id`, `role_id`, `gender_id`) VALUES
+(1, 'Flash', 'Walker', 'flashwalker', '2023-03-08', '2023-03-19 21:46:54', '@flashwalker', 'fwalker', 1, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -170,7 +179,7 @@ CREATE TABLE `survey_taker_answer` (
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `isAdmin` tinyint(4) NOT NULL DEFAULT 0,
   `createdOn` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -180,7 +189,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `isAdmin`, `createdOn`) VALUES
-(1, 'therabbitmaid@gmail.com', '$2y$10$1fd3Sar5fnrQrkRwd6EX..aWAlPUuSxQWioI9Z', 0, '2023-03-18 11:59:56');
+(1, 'nani@email.com', '$2y$10$WaW/QXCK/Mla.h7renVvrOXvx5gCKpp0hkMAvTAV5f8bAQZ5BOACe', 0, '2023-03-18 14:31:53');
 
 --
 -- Indexes for dumped tables
@@ -210,6 +219,7 @@ ALTER TABLE `gender`
 --
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
   ADD KEY `fk_profile_user1_idx` (`user_id`),
   ADD KEY `fk_profile_role1_idx` (`role_id`),
   ADD KEY `fk_profile_gender1_idx` (`gender_id`);
@@ -257,7 +267,8 @@ ALTER TABLE `survey_taker_answer`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email_UNIQUE` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -285,7 +296,7 @@ ALTER TABLE `gender`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `question`

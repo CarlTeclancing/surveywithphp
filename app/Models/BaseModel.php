@@ -59,8 +59,6 @@ class BaseModel
         return $this->stmt->fetchAll();
     }
 
- 
-
 
 
 }

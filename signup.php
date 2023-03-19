@@ -7,16 +7,8 @@
 
     <div class="container mt-5 p-5 px-lg-0 py-lg-5">
 
-        <?php if(isset($_GET['success']) && !empty($_GET['success'])): ?>
-            <div class="row">
-                <div class="alert alert-success">
-                    <?php if($_GET['success'] == "created"): ?>
-                        <p class="mb-0 fs-3 fw-bold text-center">User Account Created Successfully  <a href="<?= base_url("login.php") ?>" class="btn btn-primary text-white ms-4 mt-3 mt-sm-0">Login Now</a></p>
-                       
-                    <?php endif ?>
-                </div>
-            </div>
-        <?php endif ?>
+    
+        <?php require "partials/notification.php"?>
 
         <div class="row">
 
@@ -26,11 +18,11 @@
             </div>
             <div class="col-lg-5 mt-5 mb-5">
 
-                <h3 class="text-center fw-bold">SURVEYplus</h3>
+                <h3 class="text-center fw-bold">survey+</h3>
                 <p class="text-center mb-3">Signup to get access to your Dashboard</p>
 
 
-                <form action="includes/register.inc.php" method="POST">
+                <form action="<?= base_url("includes/register.inc.php") ?>" method="POST">
 
                     <div class="form-group mb-3">
 

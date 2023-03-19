@@ -5,11 +5,11 @@ namespace Surveyplus\App\Models;
 
 final class Users extends BaseModel 
 {
-
+    /** @var string Table name for this model */
     public string $table = "user";
 
 
-    public function getUsers() 
+    public function get() 
     {
         $users = $this->select("SELECT *  FROM $this->table")->findAll();
         return $users;
@@ -29,6 +29,12 @@ final class Users extends BaseModel
 
 
         $this->stmt->execute();
+    }
+
+    /** Verify if user with email already exist in database */
+    public function find(string $email){
+        $users = $this->select("SELECT * FROM $this->table WHERE email = '$email'")->findAll();
+        return $users;
     }
 
     

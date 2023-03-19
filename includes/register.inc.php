@@ -14,18 +14,18 @@ if(isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST")
     // Check for empty fields
     if(empty($email) || empty($password) || empty($password_confirmation)){
         header("Location:" . base_url("signup.php?error=emptyfield"));
-        exit();
+        exit(0);
     }
 
 
     // Check if password confirmation does not correspond with password
     if($password_confirmation != $password){
         header("Location:" . base_url("signup.php?error=pwdconfirm"));
-        exit();
+        exit(0);
     }
 
 
-    $dbPassword = password_hash($password, PASSWORD_DEFAULT);
+    $dbPassword = password_hash($password, PASSWORD_BCRYPT);
 
 
     $users = new UserController();
@@ -37,11 +37,21 @@ if(isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST")
         "isAdmin" => 0
     ];
 
-    $users->create($data);
+    $save = $users->create($data);
+
+    if(!$save){
+        header("Location:" . base_url("signup.php?error=notcreated"));
+        exit(0);
+    }
     
     header("Location:" . base_url("signup.php?success=created"));
-    exit();
+    exit(0);
     
 
     // debug_array($_POST);
+}else{
+
+    header("Location:" . base_url());
+    exit(0);
+
 }

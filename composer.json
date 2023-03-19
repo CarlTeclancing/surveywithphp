@@ -21,9 +21,11 @@
             "helpers/url_helper.php",
             "helpers/debug_helper.php",
             "helpers/form_helper.php",
-            "./constants.php"
+            "helpers/constants.php"
         ]
     },
 
-    "require": {}
+    "require": {
+        "google/apiclient": "*"
+    }
 }
