@@ -1,14 +1,9 @@
 <?php if (isset($_GET['success']) && !empty($_GET['success'])) : ?>
     <div class="row">
         <div class="alert alert-success">
+
             <?php if ($_GET['success'] == "created") : ?>
                 <p class="mb-0 fs-3 fw-bold text-center">User Account Created Successfully <a href="<?= base_url("login.php") ?>" class="btn btn-primary text-white ms-4 mt-3 mt-sm-0">Login Now</a></p>
-
-            <?php endif ?>
-
-
-            <?php if ($_GET['success'] == "created") : ?>
-                <p class="mb-0 fs-3 fw-bold text-center">Profile Created Successfully</p>
 
             <?php endif ?>
             

@@ -1,4 +1,4 @@
-<nav class="container-fluid">
+<nav class="container-fluid border-bottom border-2 border-primary">
 
     <div class="container d-flex justify-content-between align-items-center py-4">
 

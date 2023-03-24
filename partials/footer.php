@@ -29,6 +29,7 @@
 
 <script src="<?= BASE_URL ?>/dist/js/bootstrap.bundle.min.js"></script>
 
+
     
 </body>
 </html>

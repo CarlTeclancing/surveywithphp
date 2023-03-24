@@ -20,8 +20,39 @@ function base_url(string $link = null)
  */
 function url_is(string $link){
 
-    $linkToVerify = "/" . $link . "/";
+    $base_url_segment = BASE_URL_SEGMENT;
+
+    // checks if segment is empty or ""
+    /**
+     * This constant is empty when using a domain name like surveyplus.com
+     * if working on localhost/surveyplus, the base url segment is "surveyplus"
+     */
+    if(empty($base_url_segment)){
+
+        if(str_contains($link, ".php")){
+
+            $linkToVerify = $link;
     
+        }else{
+    
+            $linkToVerify =  $link . "/";
+        }
+
+        
+    }else{
+
+        if(str_contains($link, ".php")){
+    
+            $linkToVerify = "/" . $link;
+    
+        }else{
+    
+            $linkToVerify =  "/" . $link . "/";
+        }
+    }
+
+
+   
     if($_SERVER['REQUEST_URI'] != $linkToVerify){
         return false;
     }
@@ -30,4 +61,21 @@ function url_is(string $link){
 }
 
 
+
+if(!function_exists("survey"))
+{
+    /**
+     * Generate a survey link
+     *
+     * @param string $handle User handle
+     * @param integer $survey_id The Survey ID
+     * @param string $name  Survey Title
+     * @return string
+     */
+    function survey(string $handle, int $survey_id, string $name, int $profle_id) : string
+    {
+        return base_url("survey.php?handle=".$handle."&id=".$survey_id."&profile=" .$profle_id."&slug=".strtolower(str_replace(" ", "-", $name)));
+
+    }
+}
 

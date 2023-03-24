@@ -14,10 +14,11 @@
     "autoload" : {
 
         "psr-4": {
-            "Surveyplus\\" : "./"
+            "Surveyplus\\App\\" : "./app"
         },
 
         "files" : [
+            "helpers/string_helper.php",
             "helpers/url_helper.php",
             "helpers/debug_helper.php",
             "helpers/form_helper.php",

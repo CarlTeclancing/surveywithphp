@@ -7,7 +7,7 @@ use Surveyplus\App\Controllers\UserController;
 if(isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST")
 {
 
-    debug_array($_POST);
+    // debug_array($_POST);
 
     $email = clean_input($_POST['email']);
     $password = $_POST['password'];

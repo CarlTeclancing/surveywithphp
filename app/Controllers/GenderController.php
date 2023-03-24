@@ -15,11 +15,17 @@ class GenderController extends BaseController
     }
 
     /**
-     * Get all existing genders in database
-     *
-     * @return array All genders
+     * Get a particular gender with id
+     * @param integer $gender_id
+     * @return array Gender with $gender_id
      */
-    public function show(): array
+    public function show(int $gender_id): array
+    {
+        return $this->genders->get($gender_id);
+    }
+
+
+    public function show_all(): array
     {
         return $this->genders->get();
     }

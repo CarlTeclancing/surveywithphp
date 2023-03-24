@@ -11,7 +11,7 @@ final class Genders extends BaseModel
 
     public function get() 
     {
-        $genders = $this->select("SELECT *  FROM $this->table")->findAll();
+        $genders = $this->select("SELECT *  FROM $this->table ORDER BY id DESC")->findAll();
         return $genders;
     }
 

@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "firebase/php-jwt",
-            "version": "v6.4.0",
+            "version": "v8.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
@@ -75,12 +75,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client.git",
-                "reference": "5ed4edc9315110a715e9763d27ee6761e1aaa00a"
+                "reference": "bd7b138bbc1c5016b7e85ff85f0533ae3684b9ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/5ed4edc9315110a715e9763d27ee6761e1aaa00a",
-                "reference": "5ed4edc9315110a715e9763d27ee6761e1aaa00a",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/bd7b138bbc1c5016b7e85ff85f0533ae3684b9ed",
+                "reference": "bd7b138bbc1c5016b7e85ff85f0533ae3684b9ed",
                 "shasum": ""
             },
             "require": {
@@ -138,11 +138,11 @@
                 "issues": "https://github.com/googleapis/google-api-php-client/issues",
                 "source": "https://github.com/googleapis/google-api-php-client/tree/main"
             },
-            "time": "2023-03-17T11:15:09+00:00"
+            "time": "2023-03-23T00:09:12+00:00"
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.290.1",
+            "version": "v0.291.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
@@ -180,7 +180,7 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.290.1"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.291.0"
             },
             "time": "2023-03-13T21:05:11+00:00"
         },
@@ -801,12 +801,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "abbc1ab7c794b6cbb7ddb2d94dfe85c02634f020"
+                "reference": "b799abd1a0c387590c2f58ee3e12a640412b6031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/abbc1ab7c794b6cbb7ddb2d94dfe85c02634f020",
-                "reference": "abbc1ab7c794b6cbb7ddb2d94dfe85c02634f020",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/b799abd1a0c387590c2f58ee3e12a640412b6031",
+                "reference": "b799abd1a0c387590c2f58ee3e12a640412b6031",
                 "shasum": ""
             },
             "require": {
@@ -903,7 +903,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-15T02:43:29+00:00"
+            "time": "2023-03-23T18:04:07+00:00"
         },
         {
             "name": "psr/cache",

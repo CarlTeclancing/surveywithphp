@@ -3,9 +3,10 @@
 require "../../vendor/autoload.php";
 
 use Surveyplus\App\Controllers\ProfileController;
+session_start();
 
 if (isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST") {
-    session_start();
+   
 
     $first_name = clean_input($_POST['first_name']);
     $last_name = clean_input($_POST['last_name']);
@@ -79,9 +80,22 @@ if (isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST") {
         exit(0);
     }
 
+    // Get active profile that was saved
+
+    $existing_active_profiles = $profile->all_active_profiles($user_id);
+
+
+    // Add info to session
+    
+    $_SESSION["profile_id"] = $existing_active_profiles["id"];
+    $_SESSION['full_name'] = $existing_active_profiles["first_name"] . " " . $existing_active_profiles["last_name"];
+    $_SESSION["handle"] = $existing_active_profiles["handle"];
+
+
+
     // Set profile information in session
-    $_SESSION['full_name'] = $data["first_name"] . " " . $data["last_name"];
-    $_SESSION["handle"] = $data["handle"];
+    // $_SESSION['full_name'] = $data["first_name"] . " " . $data["last_name"];
+    // $_SESSION["handle"] = $data["handle"];
 
     header("Location:" . base_url("dashboard/index.php?success=profilecreated"));
     exit(0);
@@ -90,3 +104,4 @@ if (isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST") {
     header("Location:" . base_url());
     exit(0);
 }
+

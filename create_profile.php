@@ -4,7 +4,7 @@
     $check = new Surveyplus\App\Middleware\CheckLoggedInUser();
     $check->user_only();
 ?>
-<?php require "partials/navigation.php"; ?>
+<?php require "partials/navigation.php"?>
 <main>
 
     <div class="container mt-5 p-5 px-lg-0 py-lg-5">

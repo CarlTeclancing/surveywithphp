@@ -16,7 +16,7 @@ class Profiles extends BaseModel
      */
     public function find_all(int $userId)
     {
-        $profiles = $this->select("SELECT * FROM $this->table WHERE user_id = $userId")->findAll();
+        $profiles = $this->select("SELECT * FROM $this->table WHERE user_id = $userId ORDER BY id DESC")->findAll();
         return $profiles;
     }
 
@@ -25,7 +25,7 @@ class Profiles extends BaseModel
      *
      * @param integer $userId
      * @param integer $state 1 for active and 0 for inactive
-     * @return array An array of profiles found
+     * @return array An array of profiles
      */
     public function find(int $userId, int $state)
     {
@@ -71,7 +71,7 @@ class Profiles extends BaseModel
     public function find_username(string $username)
     {
 
-        $profiles = $this->select("SELECT * FROM $this->table WHERE username = '$username'")->findAll();
+        $profiles = $this->select("SELECT * FROM $this->table WHERE username = '$username' ORDER BY id DESC")->findAll();
         return $profiles;
     }
 }
