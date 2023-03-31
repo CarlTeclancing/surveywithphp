@@ -1,49 +1,50 @@
 <?php $pageTitle = "Login"; ?>
-<?php require "partials/header.php"?>
-<?php require "partials/navigation.php"?>
+<?php require "partials/header.php" ?>
+<?php require "partials/navigation.php" ?>
 
 
 <main>
 
-    <div class="container mt-5 p-5 px-lg-0 py-lg-5">
+    <div class="container-fluid p-5 px-lg-0 py-lg-5 bg-light">
+
+        <div class="container">
+
+            <?php require "partials/notification.php" ?>
+
+            <div class="row align-items-center">
 
 
-        <?php require "partials/notification.php"?>
+                <div class="col-lg-7 mt-5">
+                    <img class="img-fluid" src="images/undraw_sign__up.svg" alt="Signup Image" />
+                </div>
+                <div class="col-lg-5 mt-5 mb-5">
 
-        <div class="row">
-
-
-            <div class="col-lg-7 mt-5">
-                <img class="img-fluid" src="images/undraw_sign__up.svg" alt="Signup Image"/>
-            </div>
-            <div class="col-lg-5 mt-5 mb-5">
-
-                <h3 class="text-center fw-bold">survey+</h3>
-                <p class="text-center mb-3">Login to your Dashboard</p>
+                    <h3 class="text-center fw-bold">survey+</h3>
+                    <p class="text-center mb-3">Login to your Dashboard</p>
 
 
-                <form action="<?= base_url("includes/login.inc.php") ?>" method="POST" autocomplete="off">
+                    <form action="<?= base_url("includes/login.inc.php") ?>" method="POST" autocomplete="off">
 
-                    <div class="form-group mb-3">
+                        <div class="form-group mb-3">
 
-                        <input type="text" class="form-control border border-1 border-primary rounded-0" name="email" placeholder="Enter your email..." />
+                            <input type="text" class="form-control border border-1 border-primary rounded-0" name="email" placeholder="Enter your email..." />
 
-                    </div>
+                        </div>
 
 
-                    <div class="form-group mb-5">
+                        <div class="form-group mb-5">
 
-                        <input type="password" class="form-control border border-1 border-primary rounded-0" name="password" placeholder="Enter your password..." />
+                            <input type="password" class="form-control border border-1 border-primary rounded-0" name="password" placeholder="Enter your password..." />
 
-                    </div>
+                        </div>
 
-                    <div class="form-group mb-3">
+                        <div class="form-group mb-3">
 
-                        <button type="submit" class="btn btn-primary text-white w-100 rounded-0">Login</button>
+                            <button type="submit" class="btn btn-primary text-white w-100 rounded-0">Login</button>
 
-                    </div>
+                        </div>
 
-                    <p class="text-center">Or</p>
+                        <!-- <p class="text-center">Or</p>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -52,27 +53,27 @@
                         <div class="col-md-6 mt-2 mt-md-0">
                             <a href="#" class="btn surveybtn--gmail text-white w-100 rounded-0">Login with Google</a>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <p class="text-center mt-3">Don't have an account ? <a href="<?= BASE_URL . "/signup.php" ?>">Signup Here</a> </p>
+                        <p class="text-center mt-3 fs-6">Don't have an account ? <a href="<?= BASE_URL . "/signup.php" ?>">Signup Here</a> </p>
 
 
-                </form>
+                    </form>
+
+                </div>
+
 
             </div>
 
 
+
         </div>
 
-
-
     </div>
-
-
 
 </main>
 
 
 
 
-<?php require "partials/footer.php"?>
+<?php require "partials/footer.php" ?>

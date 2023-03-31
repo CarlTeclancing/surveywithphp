@@ -2,8 +2,10 @@
 
 namespace Surveyplus\App\Controllers;
 
-use Surveyplus\App\Models\Users;
-use Surveyplus\App\Models\Profiles;
+// use Surveyplus\App\Models\Users;
+// use Surveyplus\App\Models\Profiles;
+
+use Surveyplus\App\Models\{Users, Profiles};
 
 class UserController
 {

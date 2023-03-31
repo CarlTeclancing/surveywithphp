@@ -72,10 +72,27 @@ if(!function_exists("survey"))
      * @param string $name  Survey Title
      * @return string
      */
-    function survey(string $handle, int $survey_id, string $name, int $profle_id) : string
+    function survey(string $handle, int $survey_id, string $name, int $profile_id) : string
     {
-        return base_url("survey.php?handle=".$handle."&id=".$survey_id."&profile=" .$profle_id."&slug=".strtolower(str_replace(" ", "-", $name)));
+        $query = http_build_query(["handle" => $handle, "id" => $survey_id, "profile" => $profile_id, "slug" => strtolower(str_replace(" ", "-", $name))]);
+
+        return base_url("survey.php?") . $query;
 
     }
 }
+
+
+if(!function_exists("paginateSurvey"))
+{
+    function paginateSurvey(string $handle, int $survey_id, string $name, int $profile_id, int $page)
+    {
+        $query = http_build_query(["handle" => $handle, "id" => $survey_id, "profile" => $profile_id, "slug" => strtolower(str_replace(" ", "-", $name)),  "page" => $page]);
+
+        return base_url("survey.php?") . $query;
+    }
+}
+
+
+
+
 

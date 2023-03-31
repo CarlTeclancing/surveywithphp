@@ -11,7 +11,24 @@ final class Users extends BaseModel
 
     public function get() 
     {
-        $users = $this->select("SELECT *  FROM $this->table ORDER BY id DESC")->findAll();
+
+        $query = "SELECT 
+                u.id as userID, 
+                u.email as email,
+                DATE(u.createdOn) as createdDate, 
+                TIME(u.createdOn) as createdTime,
+                p.handle as handle,
+                p.dob as dateOfBirth,
+                g.name as gender
+            FROM $this->table u
+            JOIN profile p
+                ON u.id = p.user_id
+            JOIN gender g
+                ON p.gender_id = g.id
+            WHERE p.isActive = 1
+            ORDER BY u.id DESC";
+
+        $users = $this->select($query)->findAll();
         return $users;
     }
 

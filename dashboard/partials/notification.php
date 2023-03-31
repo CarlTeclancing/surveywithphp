@@ -24,6 +24,11 @@
                 <p class="mb-0 fs-3 fw-bold text-center">Survey Deleted Successfully</p>
             <?php endif ?>
 
+
+            <?php if ($_GET['success'] == "updatedtodraft" && $_GET['type'] == "survey") : ?>
+                <p class="mb-0 fs-3 fw-bold text-center">Survey State Switched to Draft Successfully</p>
+            <?php endif ?>
+
             <?php if ($_GET['success'] == "saved" && $_GET['type'] == "question") : ?>
                 <p class="mb-0 fs-3 fw-bold text-center">Question Created Successfully</p>
             <?php endif ?>
@@ -35,6 +40,9 @@
             <?php if ($_GET['success'] == "deleted" && $_GET['type'] == "question") : ?>
                 <p class="mb-0 fs-3 fw-bold text-center">Question Deleted Successfully</p>
             <?php endif ?>
+
+
+
 
         </div>
     </div>
@@ -107,6 +115,10 @@
             <?php endif ?>
 
             <?php if ($_GET['error'] == "deletenotallowed" && $_GET['type'] == "question") : ?>
+                <p class="mb-0 fs-3 fw-bold text-center">You cannot delete the questions of a published survey!</p>
+            <?php endif ?>
+
+            <?php if ($_GET['error'] == "notupdatedtodraft" && $_GET['type'] == "question") : ?>
                 <p class="mb-0 fs-3 fw-bold text-center">You cannot delete the questions of a published survey!</p>
             <?php endif ?>
 

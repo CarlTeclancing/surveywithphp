@@ -10,11 +10,13 @@ use Surveyplus\App\Controllers\ProfileController;
 use Surveyplus\App\Controllers\QuestionController;
 use Surveyplus\App\Controllers\SurveyController;
 use Surveyplus\App\Controllers\AnswerCategoryController;
+use Surveyplus\App\Controllers\AnswerController;
 
     $surveys = new SurveyController();
     $questions = new QuestionController();
-    $answer_types = new AnswerCategoryController();
+    $answer_types = new AnswerCategoryController();   
     $profiles = new ProfileController();
+    $answers = new AnswerController();
 
     
     $user_id = $_SESSION["user_id"];
@@ -23,9 +25,10 @@ use Surveyplus\App\Controllers\AnswerCategoryController;
     $profile = $profiles->all_active_profiles($user_id);
 
     $all_surveys = $surveys->show_all($profile["id"], 2);
-    $number_of_surveys = count($surveys->show_all($profile["id"]));
+    $number_of_surveys = count($surveys->show_all($profile["id"]));        
     $number_of_questions = count($questions->show_all($profile["id"]));
     $number_of_answertypes = count($answer_types->show_all());
+    $number_of_answers = ($answers->showAll($profile["id"])) ? count($answers->showAll($profile["id"])) : 0;
 
     // debug_array($_SESSION);
 
@@ -93,7 +96,7 @@ use Surveyplus\App\Controllers\AnswerCategoryController;
                             <div class="card bg-success text-white mb-4" style="background-color: #526cfe !important;">
                                 <div class="card-body row align-items-center">
                                     <div class="col-lg-6">Answers</div>
-                                    <div class="col-lg-6 text-end fs-6">0</div>
+                                    <div class="col-lg-6 text-end fs-6"><?=  !empty($number_of_answers) ? $number_of_answers : 0  ?></div>
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white stretched-link" href="#">View</a>
@@ -119,18 +122,18 @@ use Surveyplus\App\Controllers\AnswerCategoryController;
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-area me-1"></i>
-                                    Area Chart Example
+                                   Monthly Published Survey <span class="badge bg-primary"><?= date("Y") ?></span>
                                 </div>
-                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                                <div class="card-body"><canvas id="surveyBarChart" width="100%" height="40"></canvas></div>
                             </div>
                         </div>
                         <div class="col-xl-6">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar me-1"></i>
-                                    Bar Chart Example
+                                    Monthly Answers Submisions <span class="badge bg-primary"><?= date("Y") ?></span>
                                 </div>
-                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                                <div class="card-body"><canvas id="answerPieChart" width="100%" height="40"></canvas></div>
                             </div>
                         </div>
                     </div>
@@ -217,6 +220,7 @@ use Surveyplus\App\Controllers\AnswerCategoryController;
 
 
     <?php require DASHBOARD_PATH . "/partials/footer.php" ?>
+
 
 </body>
 

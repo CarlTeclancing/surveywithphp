@@ -20,3 +20,19 @@ if(!function_exists("minimize")){
     }
 
 }
+
+
+
+if(!function_exists("generateRandomCode"))
+{
+
+    function generateRandomCode()
+    {
+        return bin2hex(random_bytes(16));
+    }
+
+}
+
+
+
+

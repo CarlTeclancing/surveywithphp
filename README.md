@@ -72,3 +72,11 @@ If `yourbank.com/transfer-fund` implements the CSRF correctly, it generates a on
 Survey table `user_id` does not reference `id` in `user` table but id of the user `profile` ❌
 
 Changed survey `user_id` field name to `profile_id` ✔️
+
+Changed the table structure for answer table, name to description
+
+  // $previous = $_SERVER['HTTP_REFERER'];, this can be used to go back
+
+
+Changed the survey table description constraint from VARCHAR(45) to TEXT
+

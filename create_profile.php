@@ -2,7 +2,7 @@
 <?php require "partials/header.php"?>
 <?php
     $check = new Surveyplus\App\Middleware\CheckLoggedInUser();
-    $check->user_only();
+    $check->userOnly();
 ?>
 <?php require "partials/navigation.php"?>
 <main>

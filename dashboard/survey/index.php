@@ -120,6 +120,10 @@ $pageTitle = "All Surveys"; ?>
                                                     <?php if($survey["published"] != 1): ?>
                                                        <a href="<?= DASHBOARD_URL . '/survey/delete.php?survey=' . $survey['id'] . '&action=delete' ?>" class="btn btn-danger btn-sm">Delete</a>
                                                     <?php endif ?>
+
+                                                    <?php if($survey["published"] == 1): ?>
+                                                       <a href="<?= DASHBOARD_URL . '/survey/draft.php?survey=' . $survey['id'] . '&action=draft' ?>" class="btn btn-secondary btn-sm">Draft</a>
+                                                    <?php endif ?>
                                                 </td>
                                             </tr>
 

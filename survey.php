@@ -11,9 +11,25 @@ use Surveyplus\App\Controllers\QuestionController;
 <?php if (isset($_GET["handle"]) && isset($_GET["id"]) && isset($_GET["profile"]) && isset($_GET["slug"])) : ?>
 
     <?php
-    // debug_array($_SESSION);
-    $survey_id = $_GET["id"];
-    $profile_id = $_GET["profile"];
+
+        // debug_array($_SESSION);
+        $survey_id = $_GET["id"];
+        $profile_id = $_GET["profile"];
+        $handle = $_GET["handle"];
+        $slug = $_GET["slug"];
+
+        // Check if a session for the survey taker is set
+        if(!isset($_SESSION["survey_taker"]))
+        {
+            $query = http_build_query(["survey" => $survey_id, "profile" => $profile_id, "handle" => $handle, "slug" => $slug]);
+            header("Location: " . base_url("check_email.php?") . $query);
+            exit(0);
+        }
+
+    ?>
+
+    <?php
+
 
     $surveys = new SurveyController();
     $questions = new QuestionController();
@@ -50,6 +66,11 @@ use Surveyplus\App\Controllers\QuestionController;
     <main class="container my-5">
 
 
+        <div class="container">
+            <?php require "partials/notification.php"?>
+        </div>
+
+
         <h1 class="fw-bold text-center mb-5 text-primary text-decoration-underline"><?= $survey["name"] ?></h1>
 
 
@@ -57,6 +78,8 @@ use Surveyplus\App\Controllers\QuestionController;
 
         <input type="hidden" value="<?= $survey_id ?>" name="survey_id">
         <input type="hidden" value="<?= $profile_id?>" name="profile_id">
+        <input type="hidden" value="<?= $handle?>" name="handle">
+        <input type="hidden" value="<?= $slug?>" name="slug">
 
 
         <?php if(isset($all_survey_questions) && !empty($all_survey_questions)): ?>
@@ -78,7 +101,7 @@ use Surveyplus\App\Controllers\QuestionController;
                             <?php foreach ($description as $label) : ?>
 
                                 <div class="form-check">
-                                    <input type="radio" name="<?= "radio_" . $question["id"] ?>" class="form-check-input border border-1 border-primary" value="<?= $label ?>">
+                                    <input type="radio" name="<?= "radio_" . $question["id"] ?>" class="form-check-input border border-1 border-primary" value="<?= $label ?>" required>
                                     <label class="ms-2 fw-bold form-check-label"  for="<?= "radio_" . $question["id"] ?>"><?= $label ?></label>
                                 </div>
 
@@ -127,7 +150,7 @@ use Surveyplus\App\Controllers\QuestionController;
 
 
                         <div class="container p-0 my-3">
-                            <input type="text" name="<?= "textfield_" . $question["id"] ?>" class="form-control border border-1 border-primary rounded-0" placeholder="Type your response">
+                            <input type="text" name="<?= "textfield_" . $question["id"] ?>" class="form-control border border-1 border-primary rounded-0" placeholder="Type your response" required>
                         </div>
 
 
@@ -138,24 +161,7 @@ use Surveyplus\App\Controllers\QuestionController;
 
             <?php endforeach ?>
 
-
-
-                <div class="container p-0 mt-5 survey-taker">
-
-                <h2 class="mb-3 text-center fw-bold text-primary">Validate Survey</h2>
-
-                    <label for="email" class="fw-bold fs-3 mb-2">Your Email Address <span class="text-danger">*</span></label>
-                    <div class="form-group mb-4">
-                        <input type="email" name="email" class="form-control border border-1 border-primary rounded-0" placeholder="Type your email address" />
-                    </div>
-        
-                    <label for="email" class="fw-bold fs-3 mb-2">What do you think about this survey?</label>
-                    <div class="form-group mb-4">
-                        <textarea name="comment" class="form-control border border-1 border-primary rounded-0" placeholder="Comment" style="resize:none"></textarea>
-                    </div>
-
-                </div>
-                
+         
 
                 <button type="submit" class="btn btn-primary btn-lg w-100 text-white rounded-0">Submit Survey</button>
 

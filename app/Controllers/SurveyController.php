@@ -14,7 +14,7 @@ class SurveyController
         $this->surveys = new Surveys();
     }
 
-    public function show(int $survey_id, int $user_id) : array
+    public function show(int $survey_id, int $user_id): array
     {
         return $this->surveys->get($survey_id, $user_id);
     }
@@ -26,7 +26,7 @@ class SurveyController
     }
 
 
-    public function show_view(int $survey_id, bool $published , int $profile_id) : array|bool
+    public function show_view(int $survey_id, bool $published, int $profile_id): array|bool
     {
         return $this->surveys->get_for_view($survey_id, $published, $profile_id);
     }
@@ -39,7 +39,7 @@ class SurveyController
      * 
      * @return array
      */
-    public function show_user_survey(int $profile_id, bool $published = null) : array
+    public function show_user_survey(int $profile_id, bool $published = null): array
     {
         return $this->surveys->get(null, $profile_id, $published);
     }
@@ -47,12 +47,11 @@ class SurveyController
 
     public function create(array $data)
     {
-        if($this->surveys->save($data)){
+        if ($this->surveys->save($data)) {
             return true;
         }
 
         return false;
-
     }
 
 
@@ -60,15 +59,15 @@ class SurveyController
     public function edit(int $survey_id, int $profile_id)
     {
         $survey = $this->surveys->get($survey_id, $profile_id);
-        
+
         return $survey;
     }
-    
-    
-     // Modify 
+
+
+    // Modify 
     public function modify(array $data, int $survey_id)
     {
-        if($this->surveys->update($data, $survey_id)){
+        if ($this->surveys->update($data, $survey_id)) {
             return true;
         }
 
@@ -80,7 +79,7 @@ class SurveyController
     {
         $published_surveys = $this->surveys->visibility($survey_id, 1);
 
-        if(count($published_surveys) > 0){
+        if (count($published_surveys) > 0) {
             return true;
         }
 
@@ -91,12 +90,70 @@ class SurveyController
     {
         $delete_survey = $this->surveys->delete($survey_id);
 
-        if($delete_survey){
+        if ($delete_survey) {
             return true;
         }
 
         return false;
     }
+
+    public function getSurveyStatistics()
+    {
+
+        $stats = $this->surveys->surveyStats();
+
+        if (count($stats) > 0) {
+            return $stats;
+        }
+
+        return false;
+    }
+
+
+
+    public function getSurveyStatisticsForProfile(int $profileID)
+    {
+
+
+        $stats = $this->surveys->profileSurveyStats($profileID);
+
+        if (count($stats) > 0) {
+            return $stats;
+        }
+
+
+        return false;
+    }
+
+    public function showAllPublished(bool $isPublished, array $paginate = null)
+    {
+        $publishedSurveys = $this->surveys->get(null, null, $isPublished, null, $paginate);
+
+        if (count($publishedSurveys) > 0) {
+            return $publishedSurveys;
+        }
+
+        return false;
+    }
+
+
+    public function searchAllPublished(bool $isPublished, array $paginate = null, array $search)
+    {
+        $publishedSurveys = $this->surveys->search($isPublished, $paginate, $search);
+
+        if (count($publishedSurveys) > 0) {
+            return $publishedSurveys;
+        }
+
+        return false;
+    }
+
+
+    public function updateToDraft(int $surveyID)
+    {
+        return $this->surveys->updateToDraft($surveyID);
+    }
+
 
 
 }

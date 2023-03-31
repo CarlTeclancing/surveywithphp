@@ -21,7 +21,7 @@ final class CheckLoggedInUser
      *
      * @return redirect Redirect to the login page
      */
-    public function user_only()
+    public function userOnly()
     {
         
         if(!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])){
@@ -32,12 +32,21 @@ final class CheckLoggedInUser
     }
 
 
+    public function guestOnly()
+    {
+        if(isset($_SESSION['user_id']) || !empty($_SESSION['user_id'])){
+
+            return header("Location:" . DASHBOARD_URL);
+        }
+    }
+
+
     /**
      * Create profile incase of no profile
      *
      * @return redirect Redirect to the create profile page
      */
-    public function create_profile()
+    public function createProfile()
     {
         $numberOfProfiles = count($this->profiles->find_all($_SESSION['user_id']));
         

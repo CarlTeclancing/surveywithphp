@@ -1,56 +1,57 @@
 <?php $pageTitle = "Register"; ?>
-<?php require "partials/header.php"?>
-<?php require "partials/navigation.php"?>
+<?php require "partials/header.php" ?>
+<?php require "partials/navigation.php" ?>
 
 
 <main>
 
-    <div class="container mt-5 p-5 px-lg-0 py-lg-5">
+    <div class="container-fluid p-5 px-lg-0 py-lg-5 bg-light">
 
-    
-        <?php require "partials/notification.php"?>
+        <div class="container">
 
-        <div class="row">
+            <?php require "partials/notification.php" ?>
 
-
-            <div class="col-lg-7 mt-5">
-                <img class="img-fluid" src="images/undraw_sign__up.svg" alt="Signup Image"/>
-            </div>
-            <div class="col-lg-5 mt-5 mb-5">
-
-                <h3 class="text-center fw-bold">survey+</h3>
-                <p class="text-center mb-3">Signup to get access to your Dashboard</p>
+            <div class="row align-items-center">
 
 
-                <form action="<?= base_url("includes/register.inc.php") ?>" method="POST">
+                <div class="col-lg-7 mt-5">
+                    <img class="img-fluid" src="images/undraw_sign__up.svg" alt="Signup Image" />
+                </div>
+                <div class="col-lg-5 mt-5 mb-5">
 
-                    <div class="form-group mb-3">
-
-                        <input type="text" class="form-control border border-1 border-primary rounded-0" name="email" placeholder="Enter your email..." />
-
-                    </div>
-
-
-                    <div class="form-group mb-3">
-
-                        <input type="password" class="form-control border border-1 border-primary rounded-0" name="password" placeholder="Enter your password..." />
-
-                    </div>
+                    <h3 class="text-center fw-bold">survey+</h3>
+                    <p class="text-center mb-3">Signup to get access to your Dashboard</p>
 
 
-                    <div class="form-group mb-5">
+                    <form action="<?= base_url("includes/register.inc.php") ?>" method="POST">
 
-                        <input type="password" class="form-control border border-1 border-primary rounded-0" placeholder="Confirm password..." name="password_confirmation" />
+                        <div class="form-group mb-3">
 
-                    </div>
+                            <input type="text" class="form-control border border-1 border-primary rounded-0" name="email" placeholder="Enter your email..." />
 
-                    <div class="form-group mb-3">
+                        </div>
 
-                        <button type="submit" class="btn btn-primary text-white w-100 rounded-0">Signup</button>
 
-                    </div>
+                        <div class="form-group mb-3">
 
-                    <p class="text-center">Or</p>
+                            <input type="password" class="form-control border border-1 border-primary rounded-0" name="password" placeholder="Enter your password..." />
+
+                        </div>
+
+
+                        <div class="form-group mb-5">
+
+                            <input type="password" class="form-control border border-1 border-primary rounded-0" placeholder="Confirm password..." name="password_confirmation" />
+
+                        </div>
+
+                        <div class="form-group mb-3">
+
+                            <button type="submit" class="btn btn-primary text-white w-100 rounded-0">Signup</button>
+
+                        </div>
+
+                        <!-- <p class="text-center">Or</p>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -59,19 +60,19 @@
                         <div class="col-md-6 mt-2 mt-md-0">
                             <a href="#" class="btn surveybtn--gmail text-white w-100 rounded-0">Signup with Google</a>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <p class="text-center mt-3">Already have an account ? <a href="<?= BASE_URL . "/login.php" ?>">Login</a> </p>
+                        <p class="text-center mt-3 fs-6">Already have an account ? <a href="<?= BASE_URL . "/login.php" ?>">Login</a> </p>
 
 
-                </form>
+                    </form>
+
+                </div>
+
 
             </div>
 
-
         </div>
-
-
 
     </div>
 
@@ -82,4 +83,4 @@
 
 
 
-<?php require "partials/footer.php"?>
+<?php require "partials/footer.php" ?>
